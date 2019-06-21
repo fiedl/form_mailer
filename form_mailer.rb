@@ -2,6 +2,7 @@ require 'sinatra'
 require 'pony'
 
 set :protection, :origin_whitelist => Proc.new {allowed_domains}
+set :port, 4569
 
 get '/' do
   halt 401, 'sorry.'
