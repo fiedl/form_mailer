@@ -91,11 +91,11 @@ def from
 end
 
 def from_email
-  params[:email] || "noclue@person.net"
+  params[:email] || "form-mailer@#{host_for(request.referrer)}"
 end
 
 def from_name
-  params[:name] || "Unknown"
+  params[:name] || "Sinatra Form Mailer"
 end
 
 def message
