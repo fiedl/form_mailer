@@ -99,13 +99,15 @@ def from_name
 end
 
 def message
-  params[:message] || param_list
+  params[:message] + "\n\n" + param_list
 end
 
 def param_list
   text = ''
   params_without_redirect.each do |k,v|
-    text << "#{k}: #{v}\n"
+    unless k.in? [:message, :subject]
+      text << "#{k}: #{v}\n"
+    end
   end
 
   text
