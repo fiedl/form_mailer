@@ -48,12 +48,12 @@ def host_for(uri)
 end
 
 def send_email
-  Pony.mail(
+  Pony.mail({
     to: ENV['FORM_MAILER_TO'],
     from: from,
     subject: subject,
     body: message
-  ).merge(smtp_options)
+  }.merge(smtp_options))
 end
 
 def smtp_options
