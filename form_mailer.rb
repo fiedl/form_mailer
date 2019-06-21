@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'pony'
+require 'active_support'
+require 'active_support/core_ext/object/blank'
 
 set :protection, :origin_whitelist => Proc.new {allowed_domains}
 set :environment, :production
