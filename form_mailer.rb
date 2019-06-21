@@ -68,6 +68,8 @@ def smtp_options
         password: ENV['SMTP_PASSWORD']
       }
     }
+  else
+    {}
   end
 end
 
