@@ -52,15 +52,22 @@ def send_email
     to: ENV['FORM_MAILER_TO'],
     from: from,
     subject: subject,
-    via: :smtp,
-    body: message,
-    via_options: {
-      address: ENV['SMTP_ADDRESS'],
-      port: ENV['SMTP_PORT'],
-      user_name: ENV['SMTP_USERNAME'],
-      password: ENV['SMTP_PASSWORD']
+    body: message
+  ).merge(smtp_options)
+end
+
+def smtp_options
+  if ENV['SMTP_ADDRESS']
+    {
+      via: :smtp,
+      via_options: {
+        address: ENV['SMTP_ADDRESS'],
+        port: ENV['SMTP_PORT'],
+        user_name: ENV['SMTP_USERNAME'],
+        password: ENV['SMTP_PASSWORD']
+      }
     }
-  )
+  end
 end
 
 def redirect_to_specified_or_back
