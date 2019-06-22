@@ -22,6 +22,7 @@ post '/mail' do
 
     if params[:redirect_to] == 'xhr'# request.xhr? fails for some reason
       response.headers['Access-Control-Allow-Origin'] = '*'
+      content_type :json
       halt 200
     else
       redirect_to_specified_or_back
