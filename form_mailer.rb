@@ -17,12 +17,12 @@ get '/healthcheck' do
 end
 
 post '/mail' do
+  content_type :json
   if allowed_domain?
     send_email
 
     if params[:redirect_to] == 'xhr'# request.xhr? fails for some reason
       response.headers['Access-Control-Allow-Origin'] = '*'
-      content_type :json
       halt 200
     else
       redirect_to_specified_or_back
